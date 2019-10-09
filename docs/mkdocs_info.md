@@ -13,13 +13,17 @@ Here's a link to the forums:
 
 Here's a link to another page in the documentation:
 
-[About link](pg1.md)
+[Corners, Rollers, Base](mpcnc/base.md)
 
 Here's a link to a specific section in the documentation:
 
-[About link subsection link](pg1.md#nautae-laeva)
+[Base subsection link](mpcnc/base.md#feet)
 
 ## Images
+
+!!! note
+    It's preferable to use the syntax in [Image Resizing](#image-resizing) to this basic syntax for
+    the v1 instructions.
 
 If the image is on v1engineering.com, and it's the right size, then it can be placed here with
 markdown like this:
@@ -31,31 +35,35 @@ markdown like this:
 ![V1Engineering.com's logo](https://www.v1engineering.com/wp-content/uploads/2017/12/V1-Engineering-logo-260wide.png "This logo is linked from v1engineering.com")
 
 If the image is something you want to share, and it's the right size, then it can be added to the
-docs/media folder and linked like this:
+docs/img folder and linked like this:
 
 ```markdown
-![Backup Text](media/filename.png "Hover text")
+![Backup Text](img/filename.png "Hover text")
 ```
 
-![images image](media/pic.png "This is linked here in this github")
+![images image](img/pic.png "This is linked here in this github")
 
 
 ### Image Resizing
 
-This markdown doesn't support size hints (that I could find). But you can put basic html into
-markdown, so if you have an image and you need it to be a certain size, I found this works:
+In these instructions, it's helpful to allow a really big image to see detail. But also only show a
+smaller version, to show the overview. To accomplish this, we want the images to be big in their
+original format, and then smaller in the documentation. Then, when the user clicks the image, they
+should get a bigger view.
 
-```html
-<img src="../media/filename.png" width="400" height="320"/>
+Using these features is done like this:
+
+```
+![!Backup Text](imageLocation "Hover text"){: width="400" }
 ```
 
-The `height` is optional, and if you omit it, it will keep the original aspect ratio.
+Notice the extra `!` in the `[]` brackets. That makes this a link to the image. Notice also the
+`{: width="400" }`. That adds attributes to the image, and width limits the size, without changing
+the aspect ratio. You can also add `height=""` and set the height.
 
-The `src` might need a '../' if this isn't the main page.
+![!Example Picture](img/pic.png){: width="400" }
 
-<img src="../media/pic.png" width="400"/>
-
-<img src="../media/pic.png" width="400" height="120"/>
+![!Example Picture](img/pic.png){: width="400" height="100" }
 
 ## Organization
 
@@ -75,45 +83,120 @@ and nesting more than two is funky. Also, top levels can't be pages, so it's rea
 
 ### Embed videos
 
-Doesn't seem to work :(
-
-[[embed url=http://www.youtube.com/watch?v=6YbBmqUnoQM]]
-
-[!embed](https://www.youtube.com/watch?v=vq2jYFZVMDA)
-
-Raw html works:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/xIGre_E2_og"
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-allowfullscreen></iframe>
-
-You can get this html by clicking the share button on a video, then clicking the `<>` symbol.
+[!embed](https://www.youtube.com/watch?v=xIGre_E2_og)
 
 ### Emojis?
 
+https://facelessuser.github.io/pymdown-extensions/extensions/emoji://facelessuser.github.io/pymdown-extensions/extensions/emoji/
+
 :smile:
 
-Nope. :(
+https://facelessuser.github.io/pymdown-extensions/extensions/smartsymbols/
+
+Symbols too, like (tm), (c), -->, +/-, 1/4, 1/8
+
+### Equations?
+
+https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/
+
+$p(x|y) = \frac{p(y|x)p(x)}{p(y)}$, \(p(x|y) = \frac{p(y|x)p(x)}{p(y)}\).$$
+ 
+### Details
+
+https://facelessuser.github.io/pymdown-extensions/extensions/details/
+
+??? More details here
+    Here are some more details
+
+### Task Lists
+
+https://facelessuser.github.io/pymdown-extensions/extensions/tasklist/
+
+Task Lists are static. They don't let users click through them.
+
+- [X] item 1
+    * [X] item A
+    * [ ] item B
+        more text
+        + [x] item a
+        + [ ] item b
+        + [x] item c
+    * [X] item C
+- [ ] item 2
+- [ ] item 3
 
 ### Tables
 
 This helps a lot: [Table Generator](https://www.tablesgenerator.com/markdown_tables#)
 
-    | Tables   |      Are      |  Cool |
-    |----------|:-------------:|------:|
-    | col 1 is |  left-aligned | $1600 |
-    | col 2 is |    centered   |   $12 |
-    | col 3 is | right-aligned |    $1 |
+    | Tables      |      Are      |  Cool |
+    |-------------|:-------------:|------:|
+    | col 1 is    |  left-aligned | $1600 |
+    | col 2 is    |    centered   |   $12 |
+    | column 3 is | right-aligned |    $1 |
 
-| Tables   |      Are      |  Cool |
-|----------|:-------------:|------:|
-| col 1 is |  left-aligned | $1600 |
-| col 2 is |    centered   |   $12 |
-| col 3 is | right-aligned |    $1 |
+| Tables      |      Are      |  Cool |
+|-------------|:-------------:|------:|
+| col 1 is    |  left-aligned | $1600 |
+| col 2 is    |    centered   |   $12 |
+| column 3 is | right-aligned |    $1 |
+
+### Definitions
+
+Doe
+:   A deer, a female deer
+
+Ray
+:   A drop of golden sun
+
+Me
+:   A name I call myself
+
+Far
+:   A long long way to run
+
+Sew
+:   A needle pulling thread
+
+La
+:   A note to follow Sew
+
+Tea
+:   A drink with jam and bread
 
 ### Favicon
 
 TODO: https://www.mkdocs.org/#changing-the-favicon-icon
+
+### Code Highlighting
+
+https://python-markdown.github.io/extensions/code_hilite/
+
+```python
+import tensorflow as tf
+```
+
+https://facelessuser.github.io/pymdown-extensions/extensions/inlinehilite/
+
+inlinehilite allows inline code syntax highlighting like this: `#!python import tensorflow as tf`.
+
+# Local mkdocs
+
+Running mkdocs locally is great if you're making a lot of edits, or you're trying to refine the
+style of the deployed website.
+
+It basically works like this:
+
+1. The source files are written in markdown, with a few extra pieces of syntax going to specialized
+markdown parts.
+1. mkdocs uses the mkdocs.yml file to configure itself for this project.
+1. mkdocs configures and runs our markdown files through python-markdown.
+1. If you're running `mkdocs serve`, then the html output is immediately served locally and you can
+get to it at http://localhost:8000 .
+1. As soon as you change a file, the mkdocs serve will reload the page in your browser, which
+immediately shows the change. *Cool!*.
+1. When things are all working great, mkdocs will build the documentaton and deploy it to the
+github.io site.
 
 ## Commands
 
@@ -122,6 +205,18 @@ TODO: https://www.mkdocs.org/#changing-the-favicon-icon
 * `mkdocs build` - Build the documentation site.
 * `mkdocs gh-deploy` - Deploy the docs to github pages.
 * `mkdocs help` - Print this help message.
+
+## Installing dependencies
+
+Since this no longer only requires mkdocs as a dependency, there is a requirements.txt.
+
+To make sure you have the requirements, and you're trying to build the docs on your computer, you
+can do this:
+
+    pip install -r requirements.txt
+
+I recommend doing this in a virtualenv environment, which will let you easily remove the things
+you've installed if you've made a mistake.
 
 ## Project layout
 

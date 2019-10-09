@@ -1,27 +1,113 @@
 site_name: V1 Engineering Inc Docs
 
+repo_name: V1EngineeringInc/V1EngineeringInc-Docs
 repo_url: https://github.com/V1EngineeringInc/V1EngineeringInc-Docs/
 edit_uri: 'tree/master/docs/'
 
-theme: 'windmill'
-extra_css: [v1.css]
-
-# This doesn't seem to work. It looks like it's abusing the address:
-#     404 GET /https://www.v1engineering.com/wp-content/uploads/2017/12/V1-Engineering-logo-260wide.png
-# extra:
-#   logo: "https://www.v1engineering.com/wp-content/uploads/2017/12/V1-Engineering-logo-260wide.png"
-
-copyright: "<a href=\"https://creativecommons.org/licenses/by-sa/4.0/legalcode\">CC-BY-SA</a> Copyright 2019 V1Engineering Inc."
 nav:
  - Index: index.md
  - Editing mkdocs: mkdocs_info.md
+
  - MPCNC:
-     - Assembly:
-         - Step1: pg1.md
-     - Electronics:
-         - Step2: pg2.md
-     - Madness: 
-         - Plasma Stuff:
-            - plasma3: pg3.md
+   - Main: mpcnc/index.md
+   - Assembly:
+     - Table: mpcnc/table.md
+     - Conduit: mpcnc/conduit.md
+     - Corners, Rollers, Base: mpcnc/base.md
+     - Z-Axis: mpcnc/z-axis.md
+     - Middle Assembly: mpcnc/middle-assm.md
+     - Gantry: mpcnc/gantry.md
+     - Final: mpcnc/final.md
+     - Belts: mpcnc/belts.md
+
  - LowRider:
-     - Assembly: pg4.md
+   - Assembly: lowrider/index.md
+
+ - MP3DP:
+   - Assembly: mp3dp/index.md
+
+ - Software:
+   - Main: software/index.md
+   - Repetier-Host: software/repetier-host.md
+   - EstlCAM Basics: software/estlcam-basics.md
+   - EstlCAM Intermediate (2.5d): software/estlcam-2p5d.md
+
+ - Electronics:
+   - Main: electronics/index.md
+   - Electrical:
+     - Ultimachine Boards: electronics/ultimachine.md
+     - Ramps: electronics/ramps.md
+     - Steppers: electronics/steppers.md
+     - Reverse Stepper: software/reverse-motor.md
+   - Getting Started:
+     - Software: software/index.md
+     - Firmware: electronics/marlin-firmware.md
+     - Dual Endstops: electronics/dual-endstops.md
+   - Advanced:
+     - v1pi: electronics/v1pi.md
+ - Tools:
+   - Milling Basics: tools/milling-basics.md
+   - 3D Printing:
+     - Main: tools/import-extruder.md
+   - Lasers:
+     - Main: tools/lasers.md
+     - Engraving Mirrors: tools/laser-engraving-mirrors.md
+   - Drag Knife/Vinyl: tools/drag-knife.md
+
+ - ZenXY: zenxy/index.md
+
+ - About: about.md
+
+theme:
+  name: 'material'
+  palette:
+    primary: 'black'
+    accent: 'red'
+  # This actually works with material
+  # logo: "https://www.v1engineering.com/wp-content/uploads/2017/12/V1-Engineering-logo-260wide.png"
+  logo: "img/favicon.ico"
+  favicon: "img/favicon.ico"
+
+extra:
+  social:
+    - type: 'globe'
+      link: 'https://v1engineering.com'
+    - type: 'shopping-cart'
+      link: 'https://shop.v1engineering.com'
+
+extra_css: [v1.css]
+
+extra_javascript:
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
+
+copyright: "<a href=\"https://creativecommons.org/licenses/by-sa/4.0/legalcode\">CC-BY-SA</a> Copyright 2019 V1Engineering Inc."
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - pyembed.markdown
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_generator: !!python/name:pymdownx.emoji.to_svg
+  - pymdownx.extra
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - sane_lists
+  - smarty
+  - toc:
+      permalink: true
+  - lightgallery
+  - pymdownx.extra
+
